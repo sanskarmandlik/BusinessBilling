@@ -143,7 +143,7 @@ export default function Expense({ token, currency, addAlert }: ExpenseProps) {
             
             {/* Balance Status Cards */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <div className="glass-card" style={{ background: 'linear-gradient(135deg, rgba(18, 24, 41, 0.9), rgba(0, 242, 254, 0.05))', padding: '1rem' }}>
+              <div className="glass-card" style={{ padding: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.5rem' }}>
                   <CircleDollarSign size={16} style={{ color: 'var(--accent-cyan)' }} />
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Cash Savings</span>
@@ -153,7 +153,7 @@ export default function Expense({ token, currency, addAlert }: ExpenseProps) {
                 </div>
               </div>
 
-              <div className="glass-card" style={{ background: 'linear-gradient(135deg, rgba(18, 24, 41, 0.9), rgba(157, 78, 221, 0.05))', padding: '1rem' }}>
+              <div className="glass-card" style={{ padding: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.5rem' }}>
                   <CircleDollarSign size={16} style={{ color: 'var(--accent-purple)' }} />
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Online Savings</span>
@@ -203,18 +203,32 @@ export default function Expense({ token, currency, addAlert }: ExpenseProps) {
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <button
                       type="button"
-                      className={`btn ${paymentMethod === 'Cash' ? 'btn-primary' : 'btn-secondary'}`}
+                      className="btn"
                       onClick={() => setPaymentMethod('Cash')}
-                      style={{ padding: '0.5rem', fontSize: '0.8rem', flex: 1 }}
+                      style={{
+                        padding: '0.5rem',
+                        fontSize: '0.8rem',
+                        flex: 1,
+                        backgroundColor: paymentMethod === 'Cash' ? 'var(--accent-green)' : 'transparent',
+                        color: paymentMethod === 'Cash' ? '#ffffff' : 'var(--accent-green)',
+                        border: '1.5px solid var(--accent-green)',
+                      }}
                       disabled={submitting || (cashSaved <= 0 && onlineSaved <= 0)}
                     >
                       💵 Cash Account
                     </button>
                     <button
                       type="button"
-                      className={`btn ${paymentMethod === 'Online' ? 'btn-primary' : 'btn-secondary'}`}
+                      className="btn"
                       onClick={() => setPaymentMethod('Online')}
-                      style={{ padding: '0.5rem', fontSize: '0.8rem', flex: 1 }}
+                      style={{
+                        padding: '0.5rem',
+                        fontSize: '0.8rem',
+                        flex: 1,
+                        backgroundColor: paymentMethod === 'Online' ? 'var(--accent-cyan)' : 'transparent',
+                        color: paymentMethod === 'Online' ? '#ffffff' : 'var(--accent-cyan)',
+                        border: '1.5px solid var(--accent-cyan)',
+                      }}
                       disabled={submitting || (cashSaved <= 0 && onlineSaved <= 0)}
                     >
                       💳 Online Account

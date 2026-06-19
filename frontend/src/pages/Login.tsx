@@ -175,9 +175,9 @@ export default function Login({ onLoginSuccess, onNavigate, addAlert }: LoginPro
       <div className="auth-card">
         <div className="auth-header">
           <div className="auth-logo" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={logoImg} alt="BizPilot" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+            <img src={logoImg} alt="Ledgerly" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
           </div>
-          <h2 className="auth-title">BizPilot</h2>
+          <h2 className="auth-title">Ledgerly</h2>
           <p className="auth-subtitle">Login to manage your business operations</p>
         </div>
 

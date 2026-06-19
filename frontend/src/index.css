@@ -1,54 +1,58 @@
 /* Global Custom Styling for Sanna Billing - Professional Business Dashboard */
 
 :root {
-  /* Default: Dark Premium Theme */
-  --bg-primary: #090e1a;
-  --bg-secondary: #121829;
-  --bg-card: rgba(18, 24, 41, 0.7);
-  --bg-input: rgba(13, 18, 33, 0.8);
-  --accent-cyan: #00f2fe;
-  --accent-cyan-rgb: 0, 242, 254;
-  --accent-purple: #9d4edd;
-  --accent-purple-rgb: 157, 78, 221;
-  --accent-green: #00f5d4;
-  --accent-red: #ff007f;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(0, 242, 254, 0.5);
-  --glass-bg: rgba(18, 24, 41, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --glass-blur: 16px;
+  /* Default: Dark Theme (Clean Ledger Pro) */
+  --bg-primary: #0F172A;
+  --bg-secondary: #111827;
+  --bg-card: #111827;
+  --bg-input: #0F172A;
+  --accent-cyan: #38BDF8; /* Sky blue */
+  --accent-cyan-rgb: 56, 189, 248;
+  --accent-cyan-hover: #0ea5e9;
+  --accent-purple: #818CF8; /* Indigo */
+  --accent-purple-rgb: 129, 140, 248;
+  --accent-green: #34D399; /* Green */
+  --accent-red: #F87171; /* Red */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --border-color: #1F2937;
+  --border-focus: rgba(56, 189, 248, 0.4);
+  --glass-bg: #111827;
+  --glass-border: #1F2937;
+  --glass-blur: 0px;
   --font-sans: 'Inter', sans-serif;
-  --font-title: 'Outfit', sans-serif;
-  --shadow-premium: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --shadow-glow: 0 0 15px rgba(0, 242, 254, 0.2);
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-title: 'Inter', sans-serif;
+  --shadow-premium: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-glow: none;
+  --transition-smooth: all 0.2s ease;
 }
 
 :root.light-theme {
-  /* Light Premium Theme */
-  --bg-primary: #f1f5f9;
-  --bg-secondary: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --bg-input: #f8fafc;
-  --accent-cyan: #0891b2;
-  --accent-cyan-rgb: 8, 145, 178;
-  --accent-purple: #7c3aed;
-  --accent-purple-rgb: 124, 58, 237;
-  --accent-green: #059669;
-  --accent-red: #dc2626;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-focus: rgba(8, 145, 178, 0.5);
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.05);
-  --glass-blur: 12px;
-  --shadow-premium: 0 8px 32px 0 rgba(148, 163, 184, 0.15);
-  --shadow-glow: 0 0 15px rgba(8, 145, 178, 0.15);
+  /* Light Theme (Clean Ledger Pro - RECOMMENDED) */
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-input: #F8FAFC;
+  --accent-cyan: #1E3A8A; /* Trust Blue */
+  --accent-cyan-rgb: 30, 58, 138;
+  --accent-cyan-hover: #1E40AF;
+  --accent-purple: #4F46E5; /* Indigo */
+  --accent-purple-rgb: 79, 70, 229;
+  --accent-green: #10B981; /* Profit Green */
+  --accent-red: #EF4444; /* Expense Red */
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --border-color: #E5E7EB;
+  --border-focus: rgba(30, 58, 138, 0.4);
+  --glass-bg: #FFFFFF;
+  --glass-border: #E5E7EB;
+  --glass-blur: 0px;
+  --font-sans: 'Inter', sans-serif;
+  --font-title: 'Inter', sans-serif;
+  --shadow-premium: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-glow: none;
 }
 
 /* Base resets */
@@ -161,9 +165,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title);
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent-cyan);
 }
 
 .user-profile-header {
@@ -193,13 +195,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--border-color);
-  border: 2px solid var(--accent-cyan);
+  background-color: var(--accent-cyan);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: var(--accent-cyan);
+  color: #ffffff;
+  border: none;
 }
 
 /* Page Containers */
@@ -215,22 +217,24 @@ h1, h2, h3, h4, h5, h6 {
 /* Footer Bottom Navigation */
 .footer-nav {
   position: fixed;
-  bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 600px;
+  bottom: 0;
+  left: 0;
+  transform: none;
+  width: 100%;
+  max-width: none;
   height: 68px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  box-shadow: var(--shadow-premium);
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 1000;
-  padding: 0 10px;
+  padding: 0;
 }
 
 .tab-btn {
@@ -242,33 +246,20 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   background: transparent;
   cursor: pointer;
-  width: 55px;
+  width: 60px;
   height: 55px;
-  border-radius: 16px;
+  border-radius: 12px;
   position: relative;
   transition: var(--transition-smooth);
 }
 
 .tab-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
 }
 
 .tab-btn.active {
   color: var(--accent-cyan);
-  background: rgba(var(--accent-cyan-rgb), 0.1);
-  transform: translateY(-4px);
-}
-
-.tab-btn.active::after {
-  content: '';
-  position: absolute;
-  bottom: 6px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: var(--accent-cyan);
-  box-shadow: 0 0 10px var(--accent-cyan);
+  font-weight: 600;
 }
 
 .tab-icon {
@@ -279,23 +270,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .tab-label {
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Glassmorphism Cards */
+/* Cards */
 .glass-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  border-radius: 18px;
-  padding: 1.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
   box-shadow: var(--shadow-premium);
   transition: var(--transition-smooth);
 }
 
 .glass-card:hover {
-  border-color: rgba(var(--accent-cyan-rgb), 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 /* Stats Cards */
@@ -402,8 +391,8 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.85rem 1.5rem;
-  border-radius: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 600;
   border: none;
@@ -413,15 +402,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  background-color: var(--accent-cyan);
   color: #ffffff;
-  box-shadow: var(--shadow-glow);
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.1);
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+  background-color: var(--accent-cyan-hover);
 }
 
 .btn-secondary {
@@ -618,12 +604,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .activity-indicator.sale {
   background-color: var(--accent-green);
-  box-shadow: 0 0 8px var(--accent-green);
 }
 
 .activity-indicator.expense {
   background-color: var(--accent-red);
-  box-shadow: 0 0 8px var(--accent-red);
 }
 
 .activity-name {

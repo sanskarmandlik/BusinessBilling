@@ -160,7 +160,7 @@ export default function Signup({ onLoginSuccess, onNavigate, addAlert }: SignupP
       <div className="auth-card" style={{ maxWidth: '480px' }}>
         <div className="auth-header">
           <div className="auth-logo" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={logoImg} alt="BizPilot" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+            <img src={logoImg} alt="Ledgerly" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
           </div>
           <h2 className="auth-title">Register Business</h2>
           <p className="auth-subtitle">Create an account to start billing and tracking savings</p>
@@ -291,7 +291,7 @@ export default function Signup({ onLoginSuccess, onNavigate, addAlert }: SignupP
                 id="signup-business-name"
                 type="text"
                 className="form-input"
-                placeholder="BizPilot Store"
+                placeholder="Ledgerly Store"
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
                 style={{ paddingLeft: '44px' }}

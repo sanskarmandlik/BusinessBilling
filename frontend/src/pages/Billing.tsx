@@ -330,18 +330,32 @@ export default function Billing({ token, currency, addAlert }: BillingProps) {
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                   <button
                     type="button"
-                    className={`btn ${paymentMethod === 'Cash' ? 'btn-primary' : 'btn-secondary'}`}
+                    className="btn"
                     onClick={() => setPaymentMethod('Cash')}
-                    style={{ padding: '0.5rem', fontSize: '0.8rem', flex: 1 }}
+                    style={{
+                      padding: '0.5rem',
+                      fontSize: '0.8rem',
+                      flex: 1,
+                      backgroundColor: paymentMethod === 'Cash' ? 'var(--accent-green)' : 'transparent',
+                      color: paymentMethod === 'Cash' ? '#ffffff' : 'var(--accent-green)',
+                      border: '1.5px solid var(--accent-green)',
+                    }}
                     disabled={submitting}
                   >
                     💵 Cash
                   </button>
                   <button
                     type="button"
-                    className={`btn ${paymentMethod === 'Online' ? 'btn-primary' : 'btn-secondary'}`}
+                    className="btn"
                     onClick={() => setPaymentMethod('Online')}
-                    style={{ padding: '0.5rem', fontSize: '0.8rem', flex: 1 }}
+                    style={{
+                      padding: '0.5rem',
+                      fontSize: '0.8rem',
+                      flex: 1,
+                      backgroundColor: paymentMethod === 'Online' ? 'var(--accent-cyan)' : 'transparent',
+                      color: paymentMethod === 'Online' ? '#ffffff' : 'var(--accent-cyan)',
+                      border: '1.5px solid var(--accent-cyan)',
+                    }}
                     disabled={submitting}
                   >
                     💳 Online

@@ -16,7 +16,7 @@ export default function Settings({ token, currency, onSettingsUpdate, addAlert }
   // Settings values
   const [activeCurrency, setActiveCurrency] = useState('INR');
   const [taxRate, setTaxRate] = useState(0);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const [apiBaseUrl, setApiBaseUrlState] = useState(getApiBaseUrl());
   const [savingSettings, setSavingSettings] = useState(false);
   const [testingConnection, setTestingConnection] = useState(false);
@@ -90,7 +90,7 @@ export default function Settings({ token, currency, onSettingsUpdate, addAlert }
       if (!response.ok) throw new Error(data.error || 'Failed to fetch settings');
       setActiveCurrency(data.currency || 'INR');
       setTaxRate(data.tax_rate || 0);
-      setTheme(data.theme || 'dark');
+      setTheme(data.theme || 'light');
     } catch (err: any) {
       addAlert(err.message || 'Error fetching preference details', 'error');
     } finally {

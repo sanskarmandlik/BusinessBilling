@@ -136,11 +136,11 @@ export default function AccountInfo({ token, addAlert, onProfileUpdate }: Accoun
             </div>
 
             {/* License details */}
-            <div className="glass-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(157, 78, 221, 0.05)', borderColor: 'rgba(157, 78, 221, 0.15)' }}>
+            <div className="glass-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <Receipt style={{ color: 'var(--accent-purple)' }} />
               <div>
                 <h4 style={{ fontSize: '0.9rem', fontWeight: 600 }}>Commercial License</h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginTop: '0.1rem' }}>Active & compliant. Licensed to BizPilot.</p>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginTop: '0.1rem' }}>Active & compliant. Licensed to Ledgerly.</p>
               </div>
             </div>
           </div>

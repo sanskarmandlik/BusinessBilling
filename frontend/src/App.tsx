@@ -95,7 +95,7 @@ export default function App() {
   // Global settings state (synchronized from DB)
   const [currency, setCurrency] = useState('INR');
   const [taxRate, setTaxRate] = useState(0);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   // On first mount: load persisted session from native storage (Capacitor Preferences)
   // This is the key fix — localStorage is NOT reliably persistent on mobile WebViews.
@@ -154,7 +154,7 @@ export default function App() {
       if (response.ok) {
         setCurrency(data.currency || 'INR');
         setTaxRate(data.tax_rate || 0);
-        setTheme(data.theme || 'dark');
+        setTheme(data.theme || 'light');
       }
     } catch (error) {
       console.error('Failed to load settings:', error);
@@ -252,8 +252,8 @@ export default function App() {
         gap: '1rem',
         background: 'var(--bg-primary)'
       }}>
-        <img src={logoImg} alt="BizPilot" style={{ width: '64px', height: '64px', objectFit: 'contain', marginBottom: '0.5rem' }} />
-        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', letterSpacing: '0.05em' }}>Loading BizPilot...</p>
+        <img src={logoImg} alt="Ledgerly" style={{ width: '64px', height: '64px', objectFit: 'contain', marginBottom: '0.5rem' }} />
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', letterSpacing: '0.05em' }}>Loading Ledgerly...</p>
       </div>
     );
   }
@@ -309,14 +309,14 @@ export default function App() {
       {/* Top Header Bar */}
       <header className="header-bar">
         <div className="logo-section" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <img src={logoImg} alt="BizPilot Logo" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
-          <span className="logo-text">BizPilot</span>
+          <img src={logoImg} alt="Ledgerly Logo" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
+          <span className="logo-text">Ledgerly</span>
         </div>
         
         <div className="user-profile-header">
           <div className="user-badge">
             <span className="user-badge-name">{user ? user.name : 'Business Owner'}</span>
-            <span className="user-badge-role">{user && user.business_name ? user.business_name : 'BizPilot Admin'}</span>
+            <span className="user-badge-role">{user && user.business_name ? user.business_name : 'Ledgerly Admin'}</span>
           </div>
           <div className="profile-avatar">
             {user && user.name ? user.name.charAt(0).toUpperCase() : 'O'}

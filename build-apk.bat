@@ -1,11 +1,11 @@
 @echo off
 setlocal enabledelayedexpansion
-title BizPilot - Build APK Helper
+title Ledgerly - Build APK Helper
 color 0E
 
 echo.
 echo  ====================================================
-echo   BIZPILOT - Mobile APK Builder Helper
+echo   LEDGERLY - Mobile APK Builder Helper
 echo  ====================================================
 echo.
 
