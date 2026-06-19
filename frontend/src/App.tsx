@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Home, Briefcase, Receipt, Wallet, User, Settings as SettingsIcon, LogOut, X, Info, CheckCircle, AlertTriangle } from 'lucide-react';
 import { Preferences } from '@capacitor/preferences';
+import { App as CapApp } from '@capacitor/app';
 import { getApiBaseUrl, initApiBaseUrl } from './config';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -22,9 +23,73 @@ export default function App() {
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<any>(null);
   const [activePage, setActivePage] = useState<string>('home');
+  const [pageHistory, setPageHistory] = useState<string[]>(['home']);
   const [alerts, setAlerts] = useState<Alert[]>([]);
   // Prevents flash of login screen before native storage is read
   const [isStorageLoading, setIsStorageLoading] = useState(true);
+
+  const handleNavigate = (page: string) => {
+    if (page === activePage) return;
+    
+    if (token) {
+      if (page === 'home') {
+        setPageHistory(['home']);
+      } else {
+        setPageHistory(prev => {
+          if (prev[prev.length - 1] === page) return prev;
+          return [...prev, page];
+        });
+      }
+    }
+    setActivePage(page);
+  };
+
+  // Intercept Android hardware back button
+  useEffect(() => {
+    let backButtonListener: any;
+
+    const setupListener = async () => {
+      try {
+        backButtonListener = await CapApp.addListener('backButton', () => {
+          if (!token) {
+            // Not logged in: go back to login if on signup or reset password
+            if (activePage === 'signup' || activePage === 'forgot-password') {
+              setActivePage('login');
+            } else {
+              CapApp.exitApp();
+            }
+            return;
+          }
+
+          // Logged in: exit app if on home screen, else navigate back in pageHistory
+          if (activePage === 'home') {
+            CapApp.exitApp();
+          } else {
+            setPageHistory(prev => {
+              if (prev.length <= 1) {
+                setActivePage('home');
+                return ['home'];
+              }
+              const newHistory = prev.slice(0, -1);
+              const prevPage = newHistory[newHistory.length - 1];
+              setActivePage(prevPage);
+              return newHistory;
+            });
+          }
+        });
+      } catch (err) {
+        console.error('Failed to register hardware back button listener:', err);
+      }
+    };
+
+    setupListener();
+
+    return () => {
+      if (backButtonListener) {
+        backButtonListener.remove();
+      }
+    };
+  }, [activePage, token]);
 
   // Global settings state (synchronized from DB)
   const [currency, setCurrency] = useState('INR');
@@ -138,6 +203,7 @@ export default function App() {
     setToken(newToken);
     setUser(newUser);
     setActivePage('home');
+    setPageHistory(['home']); // Reset page history stack
   };
 
   const handleLogout = async () => {
@@ -153,6 +219,7 @@ export default function App() {
     setToken(null);
     setUser(null);
     setActivePage('login');
+    setPageHistory(['home']); // Reset page history stack
     addAlert('Logged out successfully', 'info');
   };
 
@@ -195,7 +262,7 @@ export default function App() {
     if (activePage === 'signup') {
       return (
         <>
-          <Signup onLoginSuccess={handleLoginSuccess} onNavigate={setActivePage} addAlert={addAlert} />
+          <Signup onLoginSuccess={handleLoginSuccess} onNavigate={handleNavigate} addAlert={addAlert} />
           <AlertContainer alerts={alerts} removeAlert={removeAlert} />
         </>
       );
@@ -203,14 +270,14 @@ export default function App() {
     if (activePage === 'forgot-password' || window.location.pathname === '/reset-password' || window.location.search.includes('token=')) {
       return (
         <>
-          <ForgotPassword onNavigate={setActivePage} addAlert={addAlert} />
+          <ForgotPassword onNavigate={handleNavigate} addAlert={addAlert} />
           <AlertContainer alerts={alerts} removeAlert={removeAlert} />
         </>
       );
     }
     return (
       <>
-        <Login onLoginSuccess={handleLoginSuccess} onNavigate={setActivePage} addAlert={addAlert} />
+        <Login onLoginSuccess={handleLoginSuccess} onNavigate={handleNavigate} addAlert={addAlert} />
         <AlertContainer alerts={alerts} removeAlert={removeAlert} />
       </>
     );
@@ -220,7 +287,7 @@ export default function App() {
   const renderPageContent = () => {
     switch (activePage) {
       case 'home':
-        return <Dashboard token={token} currency={currency} onNavigate={setActivePage} addAlert={addAlert} />;
+        return <Dashboard token={token} currency={currency} onNavigate={handleNavigate} addAlert={addAlert} />;
       case 'products':
         return <Products token={token} currency={currency} addAlert={addAlert} />;
       case 'billing':
@@ -232,7 +299,7 @@ export default function App() {
       case 'settings':
         return <Settings token={token} currency={currency} onSettingsUpdate={handleSettingsUpdate} addAlert={addAlert} />;
       default:
-        return <Dashboard token={token} currency={currency} onNavigate={setActivePage} addAlert={addAlert} />;
+        return <Dashboard token={token} currency={currency} onNavigate={handleNavigate} addAlert={addAlert} />;
     }
   };
 
@@ -255,7 +322,7 @@ export default function App() {
           </div>
           <button 
             className="btn btn-secondary btn-icon" 
-            onClick={() => setActivePage('settings')}
+            onClick={() => handleNavigate('settings')}
             title="App Settings"
             style={{ border: 'none', background: 'transparent', color: 'var(--text-secondary)' }}
           >
@@ -289,7 +356,7 @@ export default function App() {
             <button
               key={tab.id}
               className={`tab-btn ${activePage === tab.id ? 'active' : ''}`}
-              onClick={() => setActivePage(tab.id)}
+              onClick={() => handleNavigate(tab.id)}
             >
               <IconComponent className="tab-icon" />
               <span className="tab-label">{tab.label}</span>
