@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { User, Mail, Lock, Building, MapPin, Eye, EyeOff, Loader2, Wifi, WifiOff, CheckCircle } from 'lucide-react';
 import { getApiBaseUrl, setApiBaseUrl, getDefaultApiBaseUrl } from '../config';
 import { getAuthErrorMessage, isNetworkError, formatServerUrl } from '../utils/errorHandler';
+import logoImg from '../assets/logo.png';
 
 interface SignupProps {
   onLoginSuccess: (token: string, user: any) => void;
@@ -158,7 +159,9 @@ export default function Signup({ onLoginSuccess, onNavigate, addAlert }: SignupP
     <div className="auth-page" style={{ paddingTop: '2.5rem', paddingBottom: '2.5rem' }}>
       <div className="auth-card" style={{ maxWidth: '480px' }}>
         <div className="auth-header">
-          <div className="auth-logo">💼</div>
+          <div className="auth-logo" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={logoImg} alt="BizPilot" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+          </div>
           <h2 className="auth-title">Register Business</h2>
           <p className="auth-subtitle">Create an account to start billing and tracking savings</p>
         </div>
@@ -288,7 +291,7 @@ export default function Signup({ onLoginSuccess, onNavigate, addAlert }: SignupP
                 id="signup-business-name"
                 type="text"
                 className="form-input"
-                placeholder="Sanna General Store"
+                placeholder="BizPilot Store"
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
                 style={{ paddingLeft: '44px' }}

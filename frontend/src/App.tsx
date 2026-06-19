@@ -12,6 +12,7 @@ import Billing from './pages/Billing';
 import Expense from './pages/Expense';
 import AccountInfo from './pages/AccountInfo';
 import Settings from './pages/Settings';
+import logoImg from './assets/logo.png';
 
 interface Alert {
   id: string;
@@ -251,8 +252,8 @@ export default function App() {
         gap: '1rem',
         background: 'var(--bg-primary)'
       }}>
-        <div style={{ fontSize: '2.5rem' }}>💼</div>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', letterSpacing: '0.05em' }}>Loading Sanna Billing...</p>
+        <img src={logoImg} alt="BizPilot" style={{ width: '64px', height: '64px', objectFit: 'contain', marginBottom: '0.5rem' }} />
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', letterSpacing: '0.05em' }}>Loading BizPilot...</p>
       </div>
     );
   }
@@ -307,15 +308,15 @@ export default function App() {
     <div className="app-container">
       {/* Top Header Bar */}
       <header className="header-bar">
-        <div className="logo-section">
-          <div className="logo-icon">💼</div>
-          <span className="logo-text">Sanna Billing</span>
+        <div className="logo-section" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <img src={logoImg} alt="BizPilot Logo" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
+          <span className="logo-text">BizPilot</span>
         </div>
         
         <div className="user-profile-header">
           <div className="user-badge">
             <span className="user-badge-name">{user ? user.name : 'Business Owner'}</span>
-            <span className="user-badge-role">{user && user.business_name ? user.business_name : 'Sanna Admin'}</span>
+            <span className="user-badge-role">{user && user.business_name ? user.business_name : 'BizPilot Admin'}</span>
           </div>
           <div className="profile-avatar">
             {user && user.name ? user.name.charAt(0).toUpperCase() : 'O'}

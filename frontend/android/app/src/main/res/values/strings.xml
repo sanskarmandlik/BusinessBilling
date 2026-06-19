@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">SannaBilling</string>
-    <string name="title_activity_main">SannaBilling</string>
+    <string name="app_name">BizPilot</string>
+    <string name="title_activity_main">BizPilot</string>
     <string name="package_name">com.sannabilling.app</string>
     <string name="custom_url_scheme">com.sannabilling.app</string>
 </resources>

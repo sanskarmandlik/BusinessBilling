@@ -140,7 +140,7 @@ export default function AccountInfo({ token, addAlert, onProfileUpdate }: Accoun
               <Receipt style={{ color: 'var(--accent-purple)' }} />
               <div>
                 <h4 style={{ fontSize: '0.9rem', fontWeight: 600 }}>Commercial License</h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginTop: '0.1rem' }}>Active & compliant. Licensed to Sanna systems.</p>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginTop: '0.1rem' }}>Active & compliant. Licensed to BizPilot.</p>
               </div>
             </div>
           </div>

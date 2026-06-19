@@ -288,7 +288,7 @@ export default function Products({ token, currency, addAlert }: ProductsProps) {
                   id="prod-name"
                   type="text"
                   className="form-input"
-                  placeholder="e.g. Sanna Special Basmati Rice"
+                  placeholder="e.g. Premium Basmati Rice"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   disabled={submitting}

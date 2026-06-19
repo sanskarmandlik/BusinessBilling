@@ -1,11 +1,11 @@
 @echo off
 setlocal enabledelayedexpansion
-title Sanna Billing - Build APK Helper
+title BizPilot - Build APK Helper
 color 0E
 
 echo.
 echo  ====================================================
-echo   SANNA BILLING - Mobile APK Builder Helper
+echo   BIZPILOT - Mobile APK Builder Helper
 echo  ====================================================
 echo.
 
