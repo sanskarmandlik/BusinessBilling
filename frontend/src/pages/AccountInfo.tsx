@@ -95,7 +95,7 @@ export default function AccountInfo({ token, addAlert, onProfileUpdate }: Accoun
           <p style={{ color: 'var(--text-secondary)' }}>Loading profile details...</p>
         </div>
       ) : profile ? (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '2rem' }}>
+        <div className="account-grid">
           
           {/* Left Panel: Profile Detail Cards */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>

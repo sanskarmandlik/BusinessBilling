@@ -191,7 +191,7 @@ export default function Settings({ token, currency, onSettingsUpdate, addAlert }
           <p style={{ color: 'var(--text-secondary)' }}>Loading settings...</p>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: '1.5rem' }}>
+        <div className="settings-grid">
           
           {/* Left Panel: General Configurations */}
           <div className="glass-card" style={{ height: 'fit-content' }}>

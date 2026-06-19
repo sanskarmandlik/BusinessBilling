@@ -257,16 +257,16 @@ export default function Dashboard({ token, currency, onNavigate, addAlert }: Das
   return (
     <div className="page-content">
       {/* Greeting Header */}
-      <div style={{ display: 'flex', justifyContent: 'between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
+      <div className="dashboard-header">
         <div>
           <h1 style={{ fontSize: '1.75rem', marginBottom: '0.25rem' }}>Business Overview</h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Real-time cash flow and inventory monitor</p>
         </div>
-        <div style={{ display: 'flex', gap: '0.75rem', marginLeft: 'auto' }}>
-          <button className="btn btn-secondary" style={{ width: 'auto', padding: '0.65rem 1.25rem' }} onClick={() => onNavigate('expense')}>
+        <div className="dashboard-header-buttons">
+          <button className="btn btn-secondary" onClick={() => onNavigate('expense')}>
             Log Withdrawal
           </button>
-          <button className="btn btn-primary" style={{ width: 'auto', padding: '0.65rem 1.25rem' }} onClick={() => onNavigate('billing')}>
+          <button className="btn btn-primary" onClick={() => onNavigate('billing')}>
             New Sale (POS)
           </button>
         </div>
